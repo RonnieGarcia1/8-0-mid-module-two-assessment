@@ -63,7 +63,7 @@ const checkIfAnyMovieHasRating = (movies, rating) => {
   if (!rating) {
     rating = "G";
   }
-  return movies.some((item) => {
+  return movies.some(item => {
     return item.rated === rating;
   });
 }
@@ -84,8 +84,19 @@ const checkIfAnyMovieHasRating = (movies, rating) => {
       // Toy Story 4
     };
  */
-const findById = (movies) => {
-  
+const findById = (movies, id) => {
+  if(movies.length === 0){
+    throw "No movies available"
+  }
+let result = movies.find((item) => {
+    if(item.imdbID === id) {
+    return {item};
+  }
+});
+    if(!result) {
+    result = null;
+}
+    return result;
 }
 
 /**
@@ -110,7 +121,7 @@ const findById = (movies) => {
  *  filterByGenre(movies, "Horror")
  *  //> []
  */
-const filterByGenre = (movies) => {
+const filterByGenre = (movies, genre) => {
 
 }
 
@@ -138,7 +149,7 @@ const filterByGenre = (movies) => {
       }
     ];
  */
-const getAllMoviesReleasedAtOrBeforeYear = (movies) => {
+const getAllMoviesReleasedAtOrBeforeYear = (movies, year) => {
 
 }
 
@@ -167,7 +178,9 @@ const getAllMoviesReleasedAtOrBeforeYear = (movies) => {
     ];
  */
 const getRottenTomatoesScoreByMovie = (movies) => {
-
+  if (movies.length === 0) {
+    throw "No movies titles provided";
+  }
 }
 
 // Do not change anything below this line.
