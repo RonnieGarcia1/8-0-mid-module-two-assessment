@@ -154,7 +154,12 @@ const filterByGenre = (movies, genre) => {
     ];
  */
 const getAllMoviesReleasedAtOrBeforeYear = (movies, year) => {
+  if (movies.length === 0) {
+    throw "No movies titles provided";
+  }
 
+  return movies.filter(item => 
+    Number(item.released.slice(-4)) <= year)
 }
 
 /**
