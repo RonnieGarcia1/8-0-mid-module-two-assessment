@@ -122,7 +122,11 @@ let result = movies.find((item) => {
  *  //> []
  */
 const filterByGenre = (movies, genre) => {
-
+  if(movies.length === 0){
+    throw "no movies available"
+  }
+  return movies.filter(item => 
+    item.genre.toLowerCase().includes(genre.toLowerCase()))
 }
 
 /**
