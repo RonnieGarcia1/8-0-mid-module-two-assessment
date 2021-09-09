@@ -155,10 +155,9 @@ const filterByGenre = (movies, genre) => {
  */
 const getAllMoviesReleasedAtOrBeforeYear = (movies, year) => {
   if (movies.length === 0) {
-    throw "No movies titles provided";
+    throw "No movies available";
   }
-
-  return movies.filter(item => 
+    return movies.filter(item => 
     Number(item.released.slice(-4)) <= year)
 }
 
@@ -188,8 +187,12 @@ const getAllMoviesReleasedAtOrBeforeYear = (movies, year) => {
  */
 const getRottenTomatoesScoreByMovie = (movies) => {
   if (movies.length === 0) {
-    throw "No movies titles provided";
+    throw "No movies available";
   }
+  return movies.map((item) => { 
+    let score = item.ratings.find(rating => rating.source === "Rotten Tomatoes")
+    return {[item.title]: score.value}
+  });
 }
 
 // Do not change anything below this line.
