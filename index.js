@@ -34,9 +34,10 @@ const getAllMovieTitles = (movies) => {
   if(movies.length === 0){
     throw "No movies found";
   }
-  return movies.map(item => item.title)
+  return movies.map(item => {
+    return item.title
+  })
 }
-
 /**
  * checkIfAnyMovieHasRating()
  * -----------------------------
@@ -55,8 +56,16 @@ const getAllMovieTitles = (movies) => {
  *  checkIfAnyMovieHasRating(movies, "R");
  *  //> false
  */
-const checkIfAnyMovieHasRating = (movies) => {
-
+const checkIfAnyMovieHasRating = (movies, rating) => {
+  if(movies.length === 0){
+    throw "No movies available"
+  }
+  if (!rating) {
+    rating = "G";
+  }
+  return movies.some((item) => {
+    return item.rated === rating;
+  });
 }
 
 /**
@@ -76,7 +85,7 @@ const checkIfAnyMovieHasRating = (movies) => {
     };
  */
 const findById = (movies) => {
-
+  
 }
 
 /**
@@ -158,7 +167,7 @@ const getAllMoviesReleasedAtOrBeforeYear = (movies) => {
     ];
  */
 const getRottenTomatoesScoreByMovie = (movies) => {
-  
+
 }
 
 // Do not change anything below this line.
